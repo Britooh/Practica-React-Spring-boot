@@ -1,0 +1,722 @@
+/* ==========================================================================
+   CLÍNICA SAN RAFAEL — IDENTIDAD "ATELIER MÉDICAL"
+   Diseño Editorial Cálido · Verde Bosque (#1B4332) · Terracota (#C86446) · Marfil (#F6F2EA)
+   ========================================================================== */
+* { box-sizing: border-box; }
+
+:root {
+  --primario: #1B4332;
+  --primario-osc: #081C15;
+  --primario-suave: #E3EFE8;
+  --acento: #C86446;
+  --fondo: #F6F2EA;
+  --fondo-patron: radial-gradient(circle at 15% 10%, rgba(200, 100, 70, 0.08), transparent 45%),
+                  radial-gradient(circle at 85% 90%, rgba(27, 67, 50, 0.09), transparent 45%);
+  --superficie: #FFFDF9;
+  --superficie-alt: #F1ECE1;
+  --texto: #1C1917;
+  --texto-suave: #6B635B;
+  --borde: #E2D9C8;
+  --nav-bg: #1B4332;
+  --nav-texto: #D8E6DF;
+  --nav-activo: #C86446;
+  --peligro: #B91C1C;
+  --radio: 22px;
+  --radio-sm: 12px;
+  --sombra: 0 12px 32px -8px rgba(28, 25, 23, 0.07);
+  --font-display: 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+body {
+  margin: 0;
+  background-color: var(--fondo);
+  background-image: var(--fondo-patron);
+  background-attachment: fixed;
+  color: var(--texto);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.3rem;
+  color: var(--texto);
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+h1 { font-size: 1.9rem; font-weight: 700; line-height: 1.15; }
+h2 { font-size: 1.35rem; font-weight: 700; }
+h3 { font-size: 1.12rem; font-weight: 700; }
+a { color: var(--primario); text-decoration: none; }
+p { margin: 0.25rem 0; }
+.mono, code { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.02em; }
+
+/* ========== Navegación Superior tipo Isla Flotante ========== */
+.app-shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.navbar {
+  margin: 1.25rem auto 0;
+  width: min(1260px, calc(100% - 2rem));
+  background: var(--nav-bg);
+  color: var(--nav-texto);
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 16px 36px rgba(27, 67, 50, 0.22);
+  position: sticky;
+  top: 0.85rem;
+  z-index: 50;
+}
+
+.brand { display: flex; align-items: center; gap: 0.75rem; }
+.brand-icon {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  color: #F6F2EA;
+  display: grid; place-items: center;
+  padding: 6px;
+}
+.brand-ecg { width: 100%; height: 22px; }
+.navbar .logo {
+  color: #FFFDF9;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.1;
+}
+.brand-sub {
+  font-size: 0.63rem;
+  letter-spacing: 0.13em;
+  color: var(--nav-texto);
+  opacity: 0.82;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.navbar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--nav-texto);
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: all 0.15s ease;
+}
+.navbar a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.navbar a.active {
+  background: var(--nav-activo);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(200, 100, 70, 0.35);
+}
+
+.status-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.09);
+  font-size: 0.75rem;
+  color: var(--nav-texto);
+}
+.status-led {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.65rem 1.5rem 3rem;
+}
+
+/* ========== Hero / Encabezados de Sección ========== */
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 1.8rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+.hero-banner {
+  background: linear-gradient(135deg, #FFFDF9 0%, #F3EDE0 100%);
+}
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+.hero-ecg {
+  width: 210px;
+  height: 36px;
+  color: var(--acento);
+  opacity: 0.85;
+}
+.eyebrow-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem; }
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--acento);
+}
+.fecha-tag {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+  background: var(--superficie-alt);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  text-transform: capitalize;
+}
+.subtitulo { color: var(--texto-suave); font-size: 0.92rem; max-width: 64ch; }
+.contador-pill {
+  font-family: var(--font-mono);
+  background: var(--superficie-alt);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+}
+
+/* ========== Tarjetas KPI del Panorama ========== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.15rem;
+  margin-bottom: 1.6rem;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--superficie);
+  padding: 1.4rem 1.5rem;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.stat:hover {
+  transform: translateY(-3px);
+  border-color: var(--acento);
+}
+.stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.55rem;
+}
+.stat-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--acento);
+}
+.stat-arrow {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--superficie-alt);
+  display: grid; place-items: center;
+  font-size: 0.85rem; color: var(--texto);
+}
+.stat b {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primario);
+  margin: 0.15rem 0 0.3rem;
+}
+.stat span { font-size: 0.96rem; font-weight: 700; color: var(--texto); }
+.stat small { font-size: 0.8rem; color: var(--texto-suave); margin-top: 0.15rem; }
+
+/* ========== Cuadrícula Bento de Tarjetas (Pacientes, Médicos, Recetas) ========== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.15rem;
+}
+.patient-card {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.35rem;
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: transform 0.16s ease, border-color 0.16s ease;
+}
+.patient-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primario);
+}
+.patient-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.patient-name { font-size: 1.18rem; margin: 0.1rem 0; }
+.patient-card-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.85rem 0.95rem;
+  background: var(--superficie-alt);
+  border-radius: var(--radio-sm);
+  border: 1px solid var(--borde);
+}
+.patient-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-size: 0.83rem;
+  color: var(--texto-suave);
+}
+.patient-card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.2rem;
+}
+
+/* ========== Tickets Visuales de Citas ========== */
+.tickets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.cita-ticket {
+  display: grid;
+  grid-template-columns: 105px 1.6fr 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--superficie-alt);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  transition: border-color 0.15s ease;
+}
+.cita-ticket:hover { border-color: var(--primario); }
+.ticket-hora {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  text-align: center;
+}
+.ticket-hora .mono { font-size: 1.1rem; font-weight: 800; color: var(--primario); }
+.ticket-hora small { font-size: 0.68rem; color: var(--texto-suave); font-family: var(--font-mono); }
+.ticket-title { font-size: 1.02rem; color: var(--texto); font-family: var(--font-display); }
+.ticket-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; justify-content: flex-end; }
+
+/* ========== Tarjetas Generales y Formularios (Studio Drawer) ========== */
+.card {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.5rem;
+  box-shadow: var(--sombra);
+  margin-bottom: 1.35rem;
+}
+.studio-drawer {
+  border-left: 5px solid var(--acento);
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+.card-header-inline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--borde);
+  margin-bottom: 0.35rem;
+}
+
+.workspace-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.35rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .workspace-split {
+    grid-template-columns: 410px 1fr;
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.95rem;
+}
+.form-grid .full, .full { grid-column: 1 / -1; }
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+label.bloque { margin: 1.15rem 0; }
+
+input, select, textarea {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  background: var(--superficie-alt);
+  color: var(--texto);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 400;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+textarea { min-height: 76px; resize: vertical; }
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primario);
+  background: var(--superficie);
+  box-shadow: 0 0 0 3px var(--primario-suave);
+}
+
+/* ========== Botones ========== */
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: var(--primario);
+  color: #FFFDF9;
+  border: 1px solid transparent;
+  padding: 0.62rem 1.15rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+button:hover, .btn:hover {
+  background: var(--primario-osc);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.btn-sm { padding: 0.42rem 0.85rem; font-size: 0.8rem; }
+.secundario {
+  background: var(--superficie-alt) !important;
+  color: var(--texto) !important;
+  border: 1px solid var(--borde) !important;
+}
+.secundario:hover { border-color: var(--primario) !important; }
+.peligro {
+  background: rgba(185, 28, 28, 0.1) !important;
+  color: var(--peligro) !important;
+  border: 1px solid rgba(185, 28, 28, 0.25) !important;
+}
+.peligro:hover { background: var(--peligro) !important; color: #fff !important; }
+.acciones { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+
+/* ========== Buscador ========== */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--sombra);
+}
+.search-ico { font-size: 1.2rem; color: var(--acento); font-weight: 700; }
+.search-box .buscador { border: none; background: transparent; padding: 0.4rem 0; }
+.search-box .buscador:focus { box-shadow: none; }
+
+/* ========== Avatares, Píldoras y Estados ========== */
+.celda-persona { display: flex; align-items: center; gap: 0.85rem; }
+.avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--primario-suave);
+  color: var(--primario);
+  border: 1px solid var(--borde);
+  font-family: var(--font-mono);
+  font-weight: 800; font-size: 0.84rem;
+  display: inline-grid; place-items: center; flex-shrink: 0;
+}
+.avatar-medico { background: #FBF0EC; color: var(--acento); }
+.avatar-lg { width: 52px; height: 52px; font-size: 1.05rem; }
+
+.texto-suave { color: var(--texto-suave); font-size: 0.83rem; }
+.pill-hora {
+  font-family: var(--font-mono);
+  display: inline-block;
+  background: var(--superficie-alt);
+  border: 1px solid var(--borde);
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.pill-sangre {
+  font-family: var(--font-mono);
+  background: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+.pill-alergia {
+  background: rgba(185, 28, 28, 0.08);
+  color: var(--peligro);
+  border: 1px solid rgba(185, 28, 28, 0.22);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radio-sm);
+  font-size: 0.82rem;
+}
+.pill-ok {
+  color: var(--texto-suave);
+  font-size: 0.82rem;
+}
+.pill-especialidad {
+  display: inline-block;
+  background: var(--primario-suave);
+  color: var(--primario);
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  display: inline-block;
+  padding: 0.26rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge.programada { background: #E0F2FE; color: #075985; }
+.badge.completada { background: #DCFCE7; color: #166534; }
+.badge.cancelada  { background: #FEE2E2; color: #991B1B; }
+
+/* ========== Expediente e Historial Clínico ========== */
+.expediente-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.75rem;
+}
+.expediente-persona { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.ficha-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-top: 0.45rem; }
+.ficha-item {
+  background: var(--superficie-alt);
+  border: 1px solid var(--borde);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
+.alergia-banner {
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radio-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.85rem;
+}
+.alergia-banner.con-alergia { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
+.alergia-banner.sin-alergia { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
+
+.timeline { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.9rem; }
+.consulta-card {
+  background: var(--superficie-alt);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--acento);
+  border-radius: var(--radio-sm);
+  padding: 1.05rem 1.2rem;
+}
+.consulta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.signos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+  margin: 0.75rem 0;
+}
+.signo-box {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  padding: 0.55rem 0.8rem;
+}
+.signo-box span { display: block; font-size: 0.74rem; color: var(--texto-suave); }
+.signo-box b { font-family: var(--font-mono); font-size: 0.95rem; }
+.consulta-bloque { margin: 0.6rem 0; }
+.lista-recetas { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 0.75rem; }
+.receta-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: var(--superficie-alt);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+}
+
+/* ========== Tarjetas de Medicamentos ========== */
+.med-card {
+  display: grid;
+  grid-template-columns: auto 2fr 1fr 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+  background: var(--superficie-alt);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  padding: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+.med-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--primario-suave); color: var(--primario);
+  font-family: var(--font-mono);
+  font-weight: 800; display: grid; place-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.filtros { display: flex; gap: 0.75rem; align-items: end; flex-wrap: wrap; margin-bottom: 1.15rem; }
+.error {
+  background: #FEE2E2; color: #991B1B; border: 1px solid #FECACA;
+  padding: 0.85rem 1rem; border-radius: var(--radio-sm); margin-bottom: 1rem; font-weight: 600;
+}
+.alerta { color: #B91C1C; }
+.empty-state { text-align: center; padding: 2.2rem 1rem !important; color: var(--texto-suave); }
+
+/* ========== Tablas (en Receta) ========== */
+.tabla-scroll { overflow-x: auto; border: 1px solid var(--borde); border-radius: var(--radio-sm); }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 0.75rem 0.9rem; text-align: left; border-bottom: 1px solid var(--borde); }
+th { background: var(--superficie-alt); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ========== Hoja de Receta Imprimible ========== */
+.receta {
+  background: #FFFFFF;
+  color: #0F172A;
+  max-width: 820px;
+  margin: 1rem auto;
+  padding: 2.4rem;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+.receta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #1B4332;
+  padding-bottom: 0.9rem;
+}
+.receta-header h2 { color: #1B4332; font-size: 1.55rem; margin: 0; }
+.receta-folio { text-align: right; }
+.rx { font-size: 3rem; color: #1B4332; font-family: Georgia, serif; line-height: 1; }
+.receta-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem 1.25rem;
+  margin: 1.15rem 0;
+  padding: 0.95rem 1.15rem;
+  background: #FAF8F5;
+  border: 1px solid #E2D9C8;
+  border-radius: 12px;
+}
+.receta-seccion-titulo { margin: 1rem 0 0.5rem; color: #1B4332; font-size: 0.9rem; text-transform: uppercase; }
+.receta-tabla th { background: #E3EFE8; color: #1B4332; }
+.receta-tabla td { color: #0F172A; white-space: normal; }
+.indicaciones {
+  margin-top: 1.2rem;
+  padding: 0.9rem 1.1rem;
+  background: #FAF8F5;
+  border-left: 4px solid #C86446;
+  border-radius: 8px;
+}
+.firma { margin-top: 4rem; text-align: center; }
+.firma .linea { width: 260px; border-top: 1.5px solid #0F172A; margin: 0 auto 0.4rem; }
+
+/* ========== Responsive ========== */
+@media (max-width: 900px) {
+  .navbar { border-radius: 20px; }
+  .cita-ticket { grid-template-columns: 1fr; }
+  .ticket-actions { justify-content: flex-start; }
+  .med-card { grid-template-columns: 1fr; }
+  .signos-grid { grid-template-columns: 1fr; }
+  .receta-datos { grid-template-columns: 1fr; }
+}
+
+/* ========== IMPRESIÓN ========== */
+@media print {
+  .no-print, .navbar { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .app-shell { display: block !important; }
+  .contenedor { padding: 0 !important; max-width: none !important; }
+  .receta { border: none !important; box-shadow: none !important; margin: 0 !important; padding: 0 !important; max-width: none !important; }
+  th, .receta-datos, .indicaciones { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+@page { size: letter; margin: 15mm; }
